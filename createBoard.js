@@ -13,9 +13,13 @@ const initialBoardState = [
 
 //generateBoard: A function that generates a game board with 1 single cell "ship",
 //denoted by 'O'
+let xRandomValue;
+let yRandomValue;
+let coordinates = [];
+
 const generateBoard = (board) => {
-  const xRandomValue = Math.floor(Math.random() * 8);
-  const yRandomValue = Math.floor(Math.random() * 8);
+   xRandomValue = Math.floor(Math.random() * 8);
+   yRandomValue = Math.floor(Math.random() * 8);
 
   for (let i = 0; i < board.length; i++) {
     if (i === yRandomValue) {
@@ -26,12 +30,15 @@ const generateBoard = (board) => {
       }
     }
   }
+  coordinates.push(xRandomValue)
+  coordinates.push(yRandomValue)
   return board;
 };
 
 //Running the 'generateBoard' once on a blank board generates
 //outputs a board with a single ship. If you pass that output
 //through the 'generateBoard' function again, it will output
-//a board with the requried two ships. 
+//a board with the required two ships. 
 const newBoardWithOneShip = generateBoard(initialBoardState)
 export const newBoardWithTwoShips = generateBoard(newBoardWithOneShip)
+export {coordinates}

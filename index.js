@@ -30,7 +30,6 @@ const handleGuesses = () => {
 //Winning condition: executed when both ships are hit
 const handleWin = () => {
   console.log("Congratulations, you've won!");
-  console.log(board);
 };
 
 //Removes ship from board after a hit

@@ -19,35 +19,17 @@ let xRandomValue1;
 let yRandomValue1;
 let coordinates = [];
 
-const generateBoard = (board) => {
-  xRandomValue = Math.floor(Math.random() * 8);
-  yRandomValue = Math.floor(Math.random() * 8);
-  xRandomValue1 = Math.floor(Math.random() * 8);
-  yRandomValue1 = Math.floor(Math.random() * 8);
-
-  for (let i = 0; i < board.length; i++) {
-    if (i === yRandomValue) {
-      for (let j = 0; j < board[yRandomValue].length; j++) {
-        if (j === xRandomValue) {
-          board[yRandomValue][xRandomValue] = ["O"];
-        }
-      }
-    }
+const generateBoard = (board) => {   
+  for (var i=0; i<2;i++) { 
+    const x = Math.floor(Math.random() * 8);     
+    const y = Math.floor(Math.random() * 8);     
+    board[y][x] = ['0']; 
+    coordinates.push(x,y)
+   }   
+   return board; 
   }
-
-  for (let i = 0; i < board.length; i++) {
-    if (i === yRandomValue) {
-      for (let j = 0; j < board[yRandomValue1].length; j++) {
-        if (j === xRandomValue1) {
-          board[yRandomValue1][xRandomValue1] = ["O"];
-        }
-      }
-    }
-  }
-  coordinates.push(xRandomValue, yRandomValue, xRandomValue1, yRandomValue1);
-
-  return board;
-};
 
 export const newBoardWithTwoShips = generateBoard(initialBoardState)
 export {coordinates}
+
+

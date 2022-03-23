@@ -71,12 +71,12 @@ const askCoordinates = async () => {
     {
       type: "input",
       name: "x-coordinate",
-      message: "Please enter the first of two coordinates",
+      message: "Please enter the first of two coordinates (any number from 0 up to 7)",
     },
     {
       type: "input",
       name: "y-coordinate",
-      message: "Please enter the last coordinate",
+      message: "Please enter the last coordinate (any number from 0 up to 7)",
     },
   ];
 

@@ -12,14 +12,32 @@ console.log(`ship 1: ${ship1} ship 2 : ${ship2}`)
 // write a function that takes in user coordinates
 
 let message = "";
+let guesses = 20;
+let hits = 0
+console.log(`this is hits: ${hits}`)
+
+
+
+const handleWin = () => {
+  console.log("congratulations, you've won!")
+}
+
+const handleHits = () => {
+  if(hits ===1){
+    askCoordinates()
+  }else if(hits ===2){
+    handleWin()
+  }
+}
 
 const handleAnswer = () => {
   if(message === "Getting cooler, try again!" || message ==="Getting warmer!" || message === "Getting hot!"){
     askCoordinates()
   } else if(message === "Direct hit"){
-    console.log('Direct hit')
+    handleHits()
   }
 }
+
 
 const askCoordinates = async () => {
   const question = [
@@ -42,15 +60,13 @@ const askCoordinates = async () => {
     xCoordinate = answers["x-coordinate"];
     yCoordinate = answers["y-coordinate"];
 
-
-
-    const distToShip1 =
-      Math.abs(xCoordinate - ship1[0]) + Math.abs(yCoordinate - ship1[1]);
-    const distToShip2 =
-      Math.abs(xCoordinate - ship2[0]) + Math.abs(yCoordinate - ship2[1]);
+    const distToShip1 = Math.abs(xCoordinate - ship1[0]) + Math.abs(yCoordinate - ship1[1]);
+    const distToShip2 = Math.abs(xCoordinate - ship2[0]) + Math.abs(yCoordinate - ship2[1]);
 
       if(distToShip1 == 0 || distToShip2 == 0 ){
         message = "Direct hit!"
+        hits+=1
+        handleHits()
       }else if((distToShip1 == 2 || distToShip1 == 1) || (distToShip2 == 2 || distToShip2 == 1)){
         message = "Getting hot!"
       }else if((distToShip1 == 4 || distToShip1 == 3) || (distToShip2 == 4 || distToShip2 == 3)){
